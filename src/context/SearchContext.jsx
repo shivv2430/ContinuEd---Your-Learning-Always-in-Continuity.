@@ -65,9 +65,9 @@ export const SearchProvider = ({ children }) => {
         matched.push({
           type: 'Subject',
           title: `${subj.code}: ${subj.name}`,
-          subtitle: `Instructor: ${subj.instructor}`,
-          link: `/student/classes`,
-          tag: 'Course',
+          subtitle: `Instructor: ${subj.instructor} • ${subj.schedule}`,
+          link: `/student/subject/${subj.id}`,
+          tag: 'Course & Topics',
           tagColor: 'bg-indigo-100 text-indigo-800',
         });
       }

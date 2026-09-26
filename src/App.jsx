@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import { NotificationProvider } from './context/NotificationContext';
 import { SearchProvider } from './context/SearchContext';
+import { ThemeProvider } from './context/ThemeContext';
 
 import MainLayout from './layouts/MainLayout';
 import AuthLayout from './layouts/AuthLayout';
@@ -30,57 +31,62 @@ import TeacherResources from './pages/teacher/TeacherResources';
 import TeacherAssignments from './pages/teacher/TeacherAssignments';
 
 // Common Pages
+import SubjectDetailPage from './pages/SubjectDetailPage';
 import SettingsPage from './pages/SettingsPage';
 
 function App() {
   return (
-    <AuthProvider>
-      <NotificationProvider>
-        <SearchProvider>
-          <BrowserRouter>
-            <Routes>
-              {/* Public Landing Page */}
-              <Route path="/" element={<LandingPage />} />
+    <ThemeProvider>
+      <AuthProvider>
+        <NotificationProvider>
+          <SearchProvider>
+            <BrowserRouter>
+              <Routes>
+                {/* Public Landing Page */}
+                <Route path="/" element={<LandingPage />} />
 
-              {/* Authentication Routes */}
-              <Route element={<AuthLayout />}>
-                <Route path="/login" element={<LoginPage />} />
-                <Route path="/signup" element={<SignupPage />} />
-              </Route>
+                {/* Authentication Routes */}
+                <Route element={<AuthLayout />}>
+                  <Route path="/login" element={<LoginPage />} />
+                  <Route path="/signup" element={<SignupPage />} />
+                </Route>
 
-              {/* Student Portal (Main Layout) */}
-              <Route path="/student" element={<MainLayout />}>
-                <Route index element={<StudentDashboard />} />
-                <Route path="classes" element={<StudentClasses />} />
-                <Route path="missed" element={<StudentMissedClasses />} />
-                <Route path="class/:id" element={<MissedClassDetail />} />
-                <Route path="catch-up/:id" element={<AICatchUpPage />} />
-                <Route path="quiz/:id" element={<AIQuizPage />} />
-                <Route path="progress" element={<StudentProgressPage />} />
-              </Route>
+                {/* Student Portal (Main Layout) */}
+                <Route path="/student" element={<MainLayout />}>
+                  <Route index element={<StudentDashboard />} />
+                  <Route path="classes" element={<StudentClasses />} />
+                  <Route path="subject/:id" element={<SubjectDetailPage />} />
+                  <Route path="missed" element={<StudentMissedClasses />} />
+                  <Route path="class/:id" element={<MissedClassDetail />} />
+                  <Route path="catch-up/:id" element={<AICatchUpPage />} />
+                  <Route path="quiz/:id" element={<AIQuizPage />} />
+                  <Route path="progress" element={<StudentProgressPage />} />
+                </Route>
 
-              {/* Faculty / Teacher Portal (Main Layout) */}
-              <Route path="/teacher" element={<MainLayout />}>
-                <Route index element={<TeacherDashboard />} />
-                <Route path="classes" element={<TeacherClasses />} />
-                <Route path="classes/new" element={<TeacherNewClass />} />
-                <Route path="classes/:id" element={<TeacherClassDetail />} />
-                <Route path="resources" element={<TeacherResources />} />
-                <Route path="assignments" element={<TeacherAssignments />} />
-              </Route>
+                {/* Faculty / Teacher Portal (Main Layout) */}
+                <Route path="/teacher" element={<MainLayout />}>
+                  <Route index element={<TeacherDashboard />} />
+                  <Route path="classes" element={<TeacherClasses />} />
+                  <Route path="classes/new" element={<TeacherNewClass />} />
+                  <Route path="classes/:id" element={<TeacherClassDetail />} />
+                  <Route path="subject/:id" element={<SubjectDetailPage />} />
+                  <Route path="resources" element={<TeacherResources />} />
+                  <Route path="assignments" element={<TeacherAssignments />} />
+                </Route>
 
-              {/* Settings Route */}
-              <Route path="/settings" element={<MainLayout />}>
-                <Route index element={<SettingsPage />} />
-              </Route>
+                {/* Settings Route */}
+                <Route path="/settings" element={<MainLayout />}>
+                  <Route index element={<SettingsPage />} />
+                </Route>
 
-              {/* Fallback to Home */}
-              <Route path="*" element={<Navigate to="/" replace />} />
-            </Routes>
-          </BrowserRouter>
-        </SearchProvider>
-      </NotificationProvider>
-    </AuthProvider>
+                {/* Fallback to Home */}
+                <Route path="*" element={<Navigate to="/" replace />} />
+              </Routes>
+            </BrowserRouter>
+          </SearchProvider>
+        </NotificationProvider>
+      </AuthProvider>
+    </ThemeProvider>
   );
 }
 

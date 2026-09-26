@@ -42,10 +42,10 @@ export default function StudentDashboard() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
             Good morning, {user?.name || 'Alex'} 👋
           </h1>
-          <p className="text-sm text-slate-600 mt-1">
+          <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">
             Let's get you back on track. Academic continuity in active session.
           </p>
         </div>
@@ -96,14 +96,14 @@ export default function StudentDashboard() {
       <section className="space-y-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <h2 className="text-lg font-bold text-slate-900">Classes You Missed</h2>
-            <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-amber-100 text-amber-800">
+            <h2 className="text-lg font-bold text-slate-900 dark:text-white">Classes You Missed</h2>
+            <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 border border-amber-200 dark:border-amber-800">
               Needs Attention
             </span>
           </div>
           <Link
             to="/student/missed"
-            className="text-xs font-semibold text-indigo-600 hover:text-indigo-800 flex items-center gap-1"
+            className="text-xs font-semibold text-indigo-600 dark:text-indigo-400 hover:underline flex items-center gap-1"
           >
             View all missed classes <ArrowRight className="w-3.5 h-3.5" />
           </Link>
@@ -113,17 +113,20 @@ export default function StudentDashboard() {
           {missedClasses.map((item) => (
             <div
               key={item.id}
-              className={`rounded-2xl border p-5 transition-all relative overflow-hidden bg-white ${
+              className={`rounded-2xl border p-5 transition-all relative overflow-hidden ${
                 item.status === 'completed'
-                  ? 'border-emerald-200 bg-emerald-50/20'
-                  : 'border-slate-200/90 hover:border-indigo-300 hover:shadow-md'
+                  ? 'border-emerald-200 dark:border-emerald-900 bg-emerald-50/20 dark:bg-emerald-950/20'
+                  : 'bg-white dark:bg-slate-900 border-slate-200/90 dark:border-slate-800 hover:border-indigo-300 dark:hover:border-indigo-700 hover:shadow-md'
               }`}
             >
               {/* Top Meta */}
               <div className="flex items-center justify-between">
-                <span className="text-xs font-bold uppercase tracking-wider text-slate-400">
-                  {item.subjectName} • {item.subjectCode}
-                </span>
+                <Link
+                  to={`/student/subject/${item.subjectId || 'subj_cs201'}`}
+                  className="text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 hover:underline"
+                >
+                  {item.subjectName} • {item.subjectCode} →
+                </Link>
                 {item.status === 'completed' ? (
                   <Badge variant="emerald">
                     <CheckCircle2 className="w-3 h-3" /> Caught Up
@@ -137,31 +140,33 @@ export default function StudentDashboard() {
 
               {/* Topic & Description */}
               <div className="mt-3">
-                <h3 className="text-lg font-bold text-slate-900 group-hover:text-indigo-600">
-                  {item.topic}
-                </h3>
-                <p className="text-xs text-slate-500 mt-1 line-clamp-2 leading-relaxed">
+                <Link to={`/student/class/${item.id}`} className="block group">
+                  <h3 className="text-lg font-bold text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                    {item.topic}
+                  </h3>
+                </Link>
+                <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 line-clamp-2 leading-relaxed">
                   {item.description}
                 </p>
               </div>
 
               {/* Date & Recovery Time */}
-              <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+              <div className="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
                 <span className="flex items-center gap-1.5">
                   <Calendar className="w-3.5 h-3.5 text-slate-400" />
                   Missed: {item.displayDate}
                 </span>
-                <span className="flex items-center gap-1.5 font-medium text-slate-700">
+                <span className="flex items-center gap-1.5 font-medium text-slate-700 dark:text-slate-300">
                   <Clock className="w-3.5 h-3.5 text-slate-400" />
                   ~{item.estimatedMinutes} mins
                 </span>
               </div>
 
               {/* Action Buttons */}
-              <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between gap-3">
+              <div className="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between gap-3">
                 <Link
                   to={`/student/class/${item.id}`}
-                  className="text-xs font-semibold text-slate-600 hover:text-slate-900 flex items-center gap-1"
+                  className="text-xs font-semibold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white flex items-center gap-1"
                 >
                   View What You Missed
                 </Link>
@@ -188,11 +193,11 @@ export default function StudentDashboard() {
       {/* Two Column Section: Upcoming Classes & Pending Assignments */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Upcoming Classes */}
-        <div className="bg-white rounded-2xl border border-slate-200/80 p-5 shadow-xs">
+        <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/80 dark:border-slate-800 p-5 shadow-xs">
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-2">
-              <BookOpen className="w-4 h-4 text-indigo-600" />
-              <h3 className="font-bold text-slate-900 text-sm">Upcoming Classes</h3>
+              <BookOpen className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
+              <h3 className="font-bold text-slate-900 dark:text-white text-sm">Upcoming Classes</h3>
             </div>
             <span className="text-xs text-slate-400 font-medium">Next 48 Hours</span>
           </div>
@@ -201,18 +206,18 @@ export default function StudentDashboard() {
             {upcomingClasses.map((item) => (
               <div
                 key={item.id}
-                className="p-3.5 rounded-xl border border-slate-100 bg-slate-50/50 hover:bg-slate-50 transition-colors"
+                className="p-3.5 rounded-xl border border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/40 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
               >
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-semibold text-slate-700">{item.subject}</span>
-                  <span className="text-xs font-medium text-indigo-600">{item.time}</span>
+                  <span className="text-xs font-semibold text-slate-700 dark:text-slate-300">{item.subject}</span>
+                  <span className="text-xs font-medium text-indigo-600 dark:text-indigo-400">{item.time}</span>
                 </div>
-                <h4 className="text-sm font-bold text-slate-900 mt-1">{item.topic}</h4>
-                <div className="mt-2 text-xs text-slate-500 flex items-center justify-between">
+                <h4 className="text-sm font-bold text-slate-900 dark:text-white mt-1">{item.topic}</h4>
+                <div className="mt-2 text-xs text-slate-500 dark:text-slate-400 flex items-center justify-between">
                   <span>{item.room} • {item.instructor}</span>
                 </div>
                 {item.prerequisiteNote && (
-                  <div className="mt-2 pt-2 border-t border-slate-200/60 text-[11px] text-amber-700 flex items-center gap-1.5 font-medium">
+                  <div className="mt-2 pt-2 border-t border-slate-200/60 dark:border-slate-700/60 text-[11px] text-amber-700 dark:text-amber-400 flex items-center gap-1.5 font-medium">
                     <AlertCircle className="w-3 h-3 text-amber-500 shrink-0" />
                     <span>{item.prerequisiteNote}</span>
                   </div>
@@ -223,11 +228,11 @@ export default function StudentDashboard() {
         </div>
 
         {/* Pending Assignments */}
-        <div className="bg-white rounded-2xl border border-slate-200/80 p-5 shadow-xs">
+        <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/80 dark:border-slate-800 p-5 shadow-xs">
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-2">
-              <FileText className="w-4 h-4 text-indigo-600" />
-              <h3 className="font-bold text-slate-900 text-sm">Pending Assignments</h3>
+              <FileText className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
+              <h3 className="font-bold text-slate-900 dark:text-white text-sm">Pending Assignments</h3>
             </div>
             <span className="text-xs text-slate-400 font-medium">{pendingAssignmentsCount} Active</span>
           </div>
@@ -236,18 +241,18 @@ export default function StudentDashboard() {
             {assignments.map((item) => (
               <div
                 key={item.id}
-                className="p-3.5 rounded-xl border border-slate-100 bg-slate-50/50 hover:bg-slate-50 transition-colors flex items-center justify-between gap-3"
+                className="p-3.5 rounded-xl border border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/40 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors flex items-center justify-between gap-3"
               >
                 <div className="flex-1">
                   <div className="flex items-center gap-2">
-                    <span className="text-xs font-medium text-slate-500">{item.subject}</span>
+                    <span className="text-xs font-medium text-slate-500 dark:text-slate-400">{item.subject}</span>
                     {item.status === 'urgent' && (
-                      <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-rose-100 text-rose-700">
+                      <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-rose-100 dark:bg-rose-950 text-rose-700 dark:text-rose-300">
                         Urgent
                       </span>
                     )}
                     {item.status === 'submitted' && (
-                      <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-700">
+                      <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300">
                         Submitted
                       </span>
                     )}

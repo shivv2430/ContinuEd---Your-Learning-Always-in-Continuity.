@@ -31,10 +31,10 @@ export default function TeacherDashboard() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
             Welcome back, Professor {user?.name?.split(' ')[1] || 'Vance'}.
           </h1>
-          <p className="text-xs sm:text-sm text-slate-500 mt-1">
+          <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">
             Department of Computer Science & Engineering • Academic Continuity Control Center
           </p>
         </div>
@@ -80,37 +80,44 @@ export default function TeacherDashboard() {
       </div>
 
       {/* Main Section: Recent Class Updates & Student Recovery Status */}
-      <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/90 shadow-xs space-y-6">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 border-b border-slate-100">
+      <div className="bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-8 border border-slate-200/90 dark:border-slate-800 shadow-xs space-y-6">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 border-b border-slate-100 dark:border-slate-800">
           <div>
-            <h2 className="text-base font-bold text-slate-900">Recent Lecture Sessions & Continuity</h2>
-            <p className="text-xs text-slate-500">
+            <h2 className="text-base font-bold text-slate-900 dark:text-white">Recent Lecture Sessions & Continuity</h2>
+            <p className="text-xs text-slate-500 dark:text-slate-400">
               Students who missed these classes receive automatic AI recovery plans
             </p>
           </div>
           <Link
             to="/teacher/classes"
-            className="text-xs font-semibold text-indigo-600 hover:text-indigo-800 flex items-center gap-1"
+            className="text-xs font-semibold text-indigo-600 dark:text-indigo-400 hover:underline flex items-center gap-1"
           >
             Manage all classes <ArrowRight className="w-3.5 h-3.5" />
           </Link>
         </div>
 
-        <div className="divide-y divide-slate-100">
+        <div className="divide-y divide-slate-100 dark:divide-slate-800">
           {classes.map((cls) => (
             <div
               key={cls.id}
-              className="py-4.5 flex flex-col md:flex-row md:items-center justify-between gap-4 hover:bg-slate-50/70 p-3 rounded-2xl transition-colors"
+              className="py-4.5 flex flex-col md:flex-row md:items-center justify-between gap-4 hover:bg-slate-50/70 dark:hover:bg-slate-800/50 p-3 rounded-2xl transition-colors"
             >
               <div className="space-y-1">
                 <div className="flex items-center gap-2">
-                  <span className="text-xs font-bold uppercase tracking-wider text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded border border-indigo-200">
+                  <Link
+                    to={`/teacher/subject/${cls.subjectId || 'subj_cs201'}`}
+                    className="text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/70 px-2 py-0.5 rounded border border-indigo-200 dark:border-indigo-800 hover:underline"
+                  >
                     {cls.subjectCode}
-                  </span>
+                  </Link>
                   <span className="text-xs text-slate-400">• {cls.displayDate}</span>
                 </div>
-                <h3 className="text-base font-bold text-slate-900">{cls.topic}</h3>
-                <p className="text-xs text-slate-500 line-clamp-1 max-w-xl">
+                <Link to={`/teacher/classes/${cls.id}`} className="block">
+                  <h3 className="text-base font-bold text-slate-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
+                    {cls.topic}
+                  </h3>
+                </Link>
+                <p className="text-xs text-slate-500 dark:text-slate-400 line-clamp-1 max-w-xl">
                   {cls.description}
                 </p>
               </div>
@@ -119,15 +126,15 @@ export default function TeacherDashboard() {
                 <button
                   type="button"
                   onClick={() => setSelectedClassForAttendance(cls)}
-                  className="px-3 py-1.5 rounded-xl border border-amber-200 bg-amber-50 hover:bg-amber-100 text-amber-800 text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer"
+                  className="px-3 py-1.5 rounded-xl border border-amber-200 dark:border-amber-800/80 bg-amber-50 dark:bg-amber-950/60 hover:bg-amber-100 dark:hover:bg-amber-900/60 text-amber-800 dark:text-amber-300 text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer"
                 >
-                  <AlertCircle className="w-3.5 h-3.5 text-amber-600" />
+                  <AlertCircle className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
                   <span>{cls.studentsMissedCount || 3} Students Missed</span>
                 </button>
 
-                <Link to={`/teacher/classes/${cls.id}`}>
+                <Link to={`/teacher/subject/${cls.subjectId || 'subj_cs201'}`}>
                   <Button variant="outline" size="sm">
-                    View Details
+                    Subject Details
                   </Button>
                 </Link>
               </div>

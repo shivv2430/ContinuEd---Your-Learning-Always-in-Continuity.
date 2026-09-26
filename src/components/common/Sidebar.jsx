@@ -95,10 +95,10 @@ export default function Sidebar({ isOpen, onClose }) {
         {/* Navigation Category Label */}
         <div>
           <div className="px-3 mb-2 flex items-center justify-between">
-            <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
+            <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
               {role === 'teacher' ? 'Faculty Portal' : 'Student Space'}
             </span>
-            <span className="text-[10px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded font-mono">
+            <span className="text-[10px] bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 px-2 py-0.5 rounded font-mono">
               v1.0
             </span>
           </div>
@@ -117,15 +117,15 @@ export default function Sidebar({ isOpen, onClose }) {
                       isActive
                         ? 'bg-indigo-600 text-white shadow-xs font-semibold'
                         : link.highlight
-                        ? 'bg-indigo-50/80 text-indigo-700 hover:bg-indigo-100/80 border border-indigo-200/50'
-                        : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'
+                        ? 'bg-indigo-50/80 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 hover:bg-indigo-100/80 dark:hover:bg-indigo-900/60 border border-indigo-200/50 dark:border-indigo-800/60'
+                        : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white'
                     }`
                   }
                 >
                   {({ isActive }) => (
                     <>
                       <div className="flex items-center gap-3">
-                        <Icon className={`w-4 h-4 ${isActive ? 'text-white' : 'text-slate-500'}`} />
+                        <Icon className={`w-4 h-4 ${isActive ? 'text-white' : 'text-slate-500 dark:text-slate-400'}`} />
                         <span>{link.label}</span>
                       </div>
                       {link.badge && (
@@ -147,20 +147,20 @@ export default function Sidebar({ isOpen, onClose }) {
 
         {/* AI Continuity Quick Card */}
         {role === 'student' && (
-          <div className="bg-gradient-to-br from-indigo-50 via-purple-50 to-white rounded-2xl p-4 border border-indigo-100/80 shadow-2xs">
+          <div className="bg-gradient-to-br from-indigo-50 via-purple-50 to-white dark:from-indigo-950/40 dark:via-purple-950/20 dark:to-slate-900 rounded-2xl p-4 border border-indigo-100/80 dark:border-indigo-900/60 shadow-2xs">
             <div className="flex items-center gap-2 mb-2">
               <div className="p-1.5 bg-indigo-600 rounded-lg text-white">
                 <Sparkles className="w-3.5 h-3.5" />
               </div>
-              <span className="text-xs font-bold text-slate-800">Continuity Assistant</span>
+              <span className="text-xs font-bold text-slate-800 dark:text-slate-200">Continuity Assistant</span>
             </div>
-            <p className="text-[11px] text-slate-600 leading-relaxed mb-3">
+            <p className="text-[11px] text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
               Missed a class? Let AI synthesize what happened and generate your 4-step recovery plan.
             </p>
             <NavLink
               to="/student/missed"
               onClick={onClose}
-              className="inline-flex items-center justify-center w-full px-3 py-1.5 bg-white hover:bg-indigo-50 border border-indigo-200 text-indigo-700 text-xs font-semibold rounded-lg shadow-2xs transition-colors"
+              className="inline-flex items-center justify-center w-full px-3 py-1.5 bg-white dark:bg-slate-800 hover:bg-indigo-50 dark:hover:bg-slate-700 border border-indigo-200 dark:border-slate-700 text-indigo-700 dark:text-indigo-300 text-xs font-semibold rounded-lg shadow-2xs transition-colors"
             >
               Resume Catch-Up
             </NavLink>
@@ -169,10 +169,10 @@ export default function Sidebar({ isOpen, onClose }) {
       </div>
 
       {/* Footer Info */}
-      <div className="pt-4 border-t border-slate-100">
-        <div className="flex items-center justify-between text-xs text-slate-400">
+      <div className="pt-4 border-t border-slate-100 dark:border-slate-800">
+        <div className="flex items-center justify-between text-xs text-slate-400 dark:text-slate-500">
           <span>ContinuEd Platform</span>
-          <span className="flex items-center gap-1 text-emerald-600">
+          <span className="flex items-center gap-1 text-emerald-600 dark:text-emerald-400">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
             Online
           </span>
@@ -184,20 +184,20 @@ export default function Sidebar({ isOpen, onClose }) {
   return (
     <>
       {/* Desktop Sidebar */}
-      <aside className="hidden lg:block w-64 shrink-0 bg-white border-r border-slate-200/80 min-h-[calc(100vh-4rem)]">
+      <aside className="hidden lg:block w-64 shrink-0 bg-white dark:bg-slate-900 border-r border-slate-200/80 dark:border-slate-800 min-h-[calc(100vh-4rem)] transition-colors">
         {content}
       </aside>
 
       {/* Mobile Drawer */}
       {isOpen && (
         <div className="fixed inset-0 z-50 lg:hidden">
-          <div className="fixed inset-0 bg-slate-900/40 backdrop-blur-xs" onClick={onClose} />
-          <div className="fixed inset-y-0 left-0 w-72 bg-white shadow-2xl z-10 flex flex-col">
-            <div className="h-16 flex items-center justify-between px-6 border-b border-slate-100">
-              <span className="font-bold text-slate-900">ContinuEd Navigation</span>
+          <div className="fixed inset-0 bg-slate-900/40 dark:bg-slate-950/70 backdrop-blur-xs" onClick={onClose} />
+          <div className="fixed inset-y-0 left-0 w-72 bg-white dark:bg-slate-900 shadow-2xl z-10 flex flex-col border-r border-slate-200 dark:border-slate-800">
+            <div className="h-16 flex items-center justify-between px-6 border-b border-slate-100 dark:border-slate-800">
+              <span className="font-bold text-slate-900 dark:text-white">ContinuEd Navigation</span>
               <button
                 onClick={onClose}
-                className="text-xs bg-slate-100 hover:bg-slate-200 px-2 py-1 rounded text-slate-600"
+                className="text-xs bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 px-2 py-1 rounded text-slate-600 dark:text-slate-300 cursor-pointer"
               >
                 Close
               </button>

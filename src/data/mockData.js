@@ -28,56 +28,435 @@ export const SUBJECTS = [
     code: 'CS201',
     name: 'Data Structures',
     instructor: 'Prof. David Vance',
+    instructorEmail: 'd.vance@university.edu',
+    instructorOffice: 'Faculty Tower B, Room 412',
     color: '#4F46E5', // Indigo
     badgeColor: 'bg-indigo-50 text-indigo-700 border-indigo-200',
     schedule: 'Mon, Wed, Fri • 10:00 AM',
     progress: 72,
     room: 'Hall B-204',
+    credits: 4,
     totalLectures: 24,
     attended: 21,
     missed: 1,
+    description:
+      'Fundamental principles of data abstraction, memory pointer mechanics, dynamic allocations, balanced tree hierarchies, graphs, hash tables, and asymptotic algorithm complexity analysis.',
+    topics: [
+      {
+        id: 'topic_ds_01',
+        topicNumber: 1,
+        title: 'Static Arrays, Memory Layout & Asymptotic Notation',
+        date: '2026-09-18',
+        displayDate: 'September 18, 2026',
+        status: 'attended',
+        studentMissed: false,
+        summary:
+          'Review of contiguous memory address calculations, cache line hits, Big-O, Big-Omega, and amortized vector reallocation.',
+        teacherUploaded: {
+          resources: [
+            { id: 'res_ds_01', title: 'Lecture 01 Deck - Asymptotics & Memory Allocation.pdf', type: 'pdf', size: '2.8 MB', uploadDate: 'Sep 18, 2026' },
+            { id: 'res_ds_02', title: 'Homework #1 - Big-O Complexity Problem Set.pdf', type: 'doc', size: '420 KB', uploadDate: 'Sep 18, 2026' },
+          ],
+          notes: 'Covered tight bounds, cache locality advantages of contiguous arrays, and why vector resizing costs amortized O(1).',
+        },
+        teacherAudit: {
+          studentsAbsentCount: 1,
+          absentStudentsList: [{ name: 'Liam Patel', email: 'l.patel@university.edu', avatar: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=150', catchupStatus: 'Completed' }],
+        },
+      },
+      {
+        id: 'topic_ds_02',
+        topicNumber: 2,
+        title: 'Linked Lists & Pointer Operations',
+        date: '2026-09-24',
+        displayDate: 'September 24, 2026',
+        status: 'missed',
+        studentMissed: true,
+        missedClassId: 'missed_ds_01',
+        summary:
+          'Detailed introduction to singly linked lists, non-contiguous heap pointers, dynamic memory allocation, traversal loops, and node deletion mechanics.',
+        studentMissedDetails: {
+          reason: 'Absent (University Inter-College Hackathon)',
+          missedLecturesCount: 1,
+          estimatedMinutes: 40,
+          keyConceptsMissed: [
+            'Contiguous vs non-contiguous heap memory allocation',
+            'Node structure (*next pointer and data payload)',
+            'Time complexity trade-off: O(1) prepend vs O(n) arbitrary access',
+            'Head pointer vulnerability: avoiding catastrophic memory stranding',
+            'Traversing while current != NULL and edge case handling',
+          ],
+          warningForUpcoming: 'Crucial prerequisite for next class on Doubly & Circular Linked Lists!',
+          aiCatchupReady: true,
+          quizAvailable: true,
+        },
+        teacherUploaded: {
+          resources: [
+            { id: 'res_01', title: 'Lecture 14 Slides - Singly Linked Lists.pdf', type: 'pdf', size: '3.4 MB', uploadDate: 'Sep 24, 2026' },
+            { id: 'res_02', title: 'Board Snapshot - Memory Layout Diagram.png', type: 'image', size: '1.2 MB', uploadDate: 'Sep 24, 2026' },
+            { id: 'res_03', title: 'Starter Code - node_structure.py', type: 'code', size: '12 KB', uploadDate: 'Sep 24, 2026' },
+            { id: 'res_04', title: 'Class Recording - Linked List Pointer Traversal.mp4', type: 'video', size: '185 MB', uploadDate: 'Sep 24, 2026' },
+          ],
+          notes: 'Emphasized why array resizing is expensive vs dynamic linked nodes. Homework #3 was assigned with deadline Sep 30.',
+          assignment: {
+            id: 'asg_ds_01',
+            title: 'Implement Singly Linked List Operations',
+            description: 'Implement insertion at head, insertion at tail, deletion by value, and list traversal.',
+            dueDate: 'Sep 30, 2026',
+            points: 100,
+            status: 'pending',
+          },
+        },
+        teacherAudit: {
+          studentsAbsentCount: 4,
+          absentStudentsList: [
+            { name: 'Alex Rivera (You)', email: 'alex.rivera@university.edu', avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150', catchupStatus: 'Not started' },
+            { name: 'Marcus Brody', email: 'm.brody@university.edu', avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150', catchupStatus: 'In progress' },
+            { name: 'Sophia Lin', email: 's.lin@university.edu', avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150', catchupStatus: 'Completed' },
+            { name: 'Ethan Hunt', email: 'e.hunt@university.edu', avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=150', catchupStatus: 'Not started' },
+          ],
+        },
+      },
+      {
+        id: 'topic_ds_03',
+        topicNumber: 3,
+        title: 'Doubly Linked Lists & Circular Sentinels',
+        date: '2026-09-28',
+        displayDate: 'September 28, 2026',
+        status: 'upcoming',
+        studentMissed: false,
+        summary:
+          'Bidirectional traversal (*prev and *next), dummy head/tail sentinels eliminating edge-case null checks, circular queue mechanics.',
+        teacherUploaded: {
+          resources: [
+            { id: 'res_ds_05', title: 'Lecture 15 Pre-Reading - Doubly Linked Lists.pdf', type: 'pdf', size: '2.1 MB', uploadDate: 'Sep 26, 2026' },
+            { id: 'res_ds_06', title: 'Lab 4 Spec - Circular Buffer Implementation.pdf', type: 'doc', size: '510 KB', uploadDate: 'Sep 26, 2026' },
+          ],
+          notes: 'Students must master singly linked list pointer assignment before this session.',
+        },
+        teacherAudit: { studentsAbsentCount: 0, absentStudentsList: [] },
+      },
+      {
+        id: 'topic_ds_04',
+        topicNumber: 4,
+        title: 'Stacks, Call Frames & Expression Parsing',
+        date: '2026-09-15',
+        displayDate: 'September 15, 2026',
+        status: 'attended',
+        studentMissed: false,
+        summary:
+          'LIFO access, call stack execution, parenthesis balancing, and infix to postfix evaluation.',
+        teacherUploaded: {
+          resources: [
+            { id: 'res_ds_07', title: 'Lecture 11 Slides - Stacks & Call Frames.pdf', type: 'pdf', size: '3.1 MB', uploadDate: 'Sep 15, 2026' },
+            { id: 'res_ds_08', title: 'Python Code - Shunting Yard Algorithm.py', type: 'code', size: '18 KB', uploadDate: 'Sep 15, 2026' },
+          ],
+          notes: 'Demonstrated stack overflow and how compilers implement recursion.',
+        },
+        teacherAudit: { studentsAbsentCount: 2, absentStudentsList: [] },
+      },
+      {
+        id: 'topic_ds_05',
+        topicNumber: 5,
+        title: 'Binary Search Trees & Traversal Algorithms',
+        date: '2026-09-12',
+        displayDate: 'September 12, 2026',
+        status: 'attended',
+        studentMissed: false,
+        summary:
+          'Hierarchical trees, BST invariant, In-order/Pre-order/Post-order traversals, and search/insert complexity.',
+        teacherUploaded: {
+          resources: [
+            { id: 'res_ds_09', title: 'Lecture 09 Slides - BST Principles.pdf', type: 'pdf', size: '4.2 MB', uploadDate: 'Sep 12, 2026' },
+            { id: 'res_ds_10', title: 'Interactive BST Traversal Guide.pdf', type: 'doc', size: '890 KB', uploadDate: 'Sep 12, 2026' },
+          ],
+          notes: 'Key emphasis: BST degenerative behavior into linked list O(n) if unbalanced.',
+        },
+        teacherAudit: { studentsAbsentCount: 1, absentStudentsList: [] },
+      },
+    ],
   },
   {
     id: 'subj_ec202',
     code: 'EC202',
     name: 'Digital Electronics',
     instructor: 'Dr. Sarah Jenkins',
+    instructorEmail: 's.jenkins@university.edu',
+    instructorOffice: 'Engineering Block C, Room 208',
     color: '#0D9488', // Teal
     badgeColor: 'bg-teal-50 text-teal-700 border-teal-200',
     schedule: 'Tue, Thu • 02:00 PM',
     progress: 65,
     room: 'Lab 3',
+    credits: 4,
     totalLectures: 20,
     attended: 18,
     missed: 1,
+    description:
+      'Study of combinational logic design, sequential memory elements, flip-flops, synchronous and asynchronous counters, shift registers, and finite state machines (FSM).',
+    topics: [
+      {
+        id: 'topic_de_01',
+        topicNumber: 1,
+        title: 'Boolean Algebra & Karnaugh Map Simplification',
+        date: '2026-09-17',
+        displayDate: 'September 17, 2026',
+        status: 'attended',
+        studentMissed: false,
+        summary:
+          'Sum of products (SOP), Product of sums (POS), minterms, maxterms, and 4-variable K-map minimization techniques.',
+        teacherUploaded: {
+          resources: [
+            { id: 'res_de_01', title: 'Lecture 06 Deck - Karnaugh Maps Mastery.pdf', type: 'pdf', size: '3.6 MB', uploadDate: 'Sep 17, 2026' },
+            { id: 'res_de_02', title: 'Practice Sheet - 4-Variable K-Map Problems.pdf', type: 'doc', size: '640 KB', uploadDate: 'Sep 17, 2026' },
+          ],
+          notes: 'Emphasized don’t-care conditions and avoiding redundant prime implicant loops.',
+        },
+        teacherAudit: { studentsAbsentCount: 0, absentStudentsList: [] },
+      },
+      {
+        id: 'topic_de_02',
+        topicNumber: 2,
+        title: 'Sequential Circuits & Flip-Flops',
+        date: '2026-09-25',
+        displayDate: 'September 25, 2026',
+        status: 'missed',
+        studentMissed: true,
+        missedClassId: 'missed_de_01',
+        summary:
+          'Difference between combinational logic and sequential logic with internal memory feedback. Analysis of SR Latches, D Flip-Flops, and clock triggers.',
+        studentMissedDetails: {
+          reason: 'Absent (Medical Checkup)',
+          missedLecturesCount: 1,
+          estimatedMinutes: 35,
+          keyConceptsMissed: [
+            'Combinational logic vs sequential state loops',
+            'SR Latch forbidden condition (S=1, R=1 in active-high NOR latches)',
+            'Clock triggering: Edge-triggered vs Level-sensitive',
+            'Setup time (t_su) and hold time (t_h) constraints',
+            'Why D flip-flop inverter eliminates indeterminate conditions',
+          ],
+          warningForUpcoming: 'Crucial prerequisite for next class on JK & T Flip-Flops and Counters!',
+          aiCatchupReady: true,
+          quizAvailable: true,
+        },
+        teacherUploaded: {
+          resources: [
+            { id: 'res_04', title: 'Sequential Logic & Flip-Flop Fundamentals.pdf', type: 'pdf', size: '5.1 MB', uploadDate: 'Sep 25, 2026' },
+            { id: 'res_05', title: 'Timing Diagrams Simulation Handout.pdf', type: 'pdf', size: '1.8 MB', uploadDate: 'Sep 25, 2026' },
+            { id: 'res_de_03', title: 'Oscilloscope Waveform Capture - Setup Skew.png', type: 'image', size: '920 KB', uploadDate: 'Sep 25, 2026' },
+          ],
+          notes: 'Dr. Jenkins demonstrated race conditions on the oscilloscope. Assigned Homework #2 on D Flip-Flop timing.',
+          assignment: {
+            id: 'asg_de_01',
+            title: 'D Flip-Flop Timing & Truth Table Analysis',
+            description: 'Derive excitation table and draw timing waveforms for master-slave flip-flop.',
+            dueDate: 'Oct 02, 2026',
+            points: 50,
+            status: 'pending',
+          },
+        },
+        teacherAudit: {
+          studentsAbsentCount: 3,
+          absentStudentsList: [
+            { name: 'Alex Rivera (You)', email: 'alex.rivera@university.edu', avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150', catchupStatus: 'Not started' },
+            { name: 'Liam Patel', email: 'l.patel@university.edu', avatar: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=150', catchupStatus: 'Completed' },
+            { name: 'Maya Gomez', email: 'm.gomez@university.edu', avatar: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=150', catchupStatus: 'In progress' },
+          ],
+        },
+      },
+      {
+        id: 'topic_de_03',
+        topicNumber: 3,
+        title: 'JK & T Flip-Flops and Synchronous Counters',
+        date: '2026-09-30',
+        displayDate: 'September 30, 2026',
+        status: 'upcoming',
+        studentMissed: false,
+        summary:
+          'Toggle mode in JK and T flip-flops, designing modulo-N synchronous up/down counters using excitation tables.',
+        teacherUploaded: {
+          resources: [
+            { id: 'res_de_04', title: 'Lab Guide - Modulo-16 Synchronous Counter.pdf', type: 'doc', size: '1.2 MB', uploadDate: 'Sep 26, 2026' },
+          ],
+          notes: 'Read up on excitation tables prior to Wednesday lab.',
+        },
+        teacherAudit: { studentsAbsentCount: 0, absentStudentsList: [] },
+      },
+    ],
   },
   {
     id: 'subj_ma201',
     code: 'MA201',
     name: 'Mathematics III',
     instructor: 'Dr. Robert Chen',
+    instructorEmail: 'r.chen@university.edu',
+    instructorOffice: 'Science Building A, Room 315',
     color: '#EA580C', // Orange
     badgeColor: 'bg-orange-50 text-orange-700 border-orange-200',
     schedule: 'Mon, Wed • 11:30 AM',
     progress: 85,
     room: 'Lecture Hall 1',
+    credits: 4,
     totalLectures: 22,
     attended: 21,
     missed: 1,
+    description:
+      'Advanced engineering mathematics covering vector spaces, linear transformations, eigenvalue decompositions, Fourier transforms, and boundary value partial differential equations.',
+    topics: [
+      {
+        id: 'topic_ma_01',
+        topicNumber: 1,
+        title: 'Vector Spaces & Subspace Basis',
+        date: '2026-09-15',
+        displayDate: 'September 15, 2026',
+        status: 'attended',
+        studentMissed: false,
+        summary:
+          'Linear independence, spanning sets, dimension of vector spaces, row space, column space, and null space.',
+        teacherUploaded: {
+          resources: [
+            { id: 'res_ma_01', title: 'Lecture 08 Notes - Linear Independence & Basis.pdf', type: 'pdf', size: '2.5 MB', uploadDate: 'Sep 15, 2026' },
+          ],
+          notes: 'Demonstrated Rank-Nullity Theorem with worked 4x4 matrix.',
+        },
+        teacherAudit: { studentsAbsentCount: 1, absentStudentsList: [] },
+      },
+      {
+        id: 'topic_ma_02',
+        topicNumber: 2,
+        title: 'Eigenvalues & Characteristic Equations',
+        date: '2026-09-22',
+        displayDate: 'September 22, 2026',
+        status: 'missed',
+        studentMissed: true,
+        missedClassId: 'missed_ma_01',
+        summary:
+          'Finding eigenvalues and eigenvectors of 2x2 and 3x3 square matrices using det(A - lambda*I) = 0 and solving the homogeneous null space.',
+        studentMissedDetails: {
+          reason: 'Absent (Severe Commute Disruption)',
+          missedLecturesCount: 1,
+          estimatedMinutes: 45,
+          keyConceptsMissed: [
+            'Definition: A*v = lambda*v where v != 0 is the eigenvector',
+            'Solving det(A - lambda*I) = 0 yields the characteristic polynomial',
+            'Multiplicity of eigenvalues: algebraic vs geometric multiplicity',
+            'Applications in principal component analysis (PCA) and stability analysis',
+          ],
+          warningForUpcoming: 'Crucial prerequisite for Diagonalization of Symmetric Matrices!',
+          aiCatchupReady: true,
+          quizAvailable: true,
+        },
+        teacherUploaded: {
+          resources: [
+            { id: 'res_06', title: 'Eigenvalues and Diagonalization Guide.pdf', type: 'pdf', size: '2.9 MB', uploadDate: 'Sep 22, 2026' },
+            { id: 'res_ma_02', title: 'Class Handout - Characteristic Polynomial Roots.pdf', type: 'doc', size: '580 KB', uploadDate: 'Sep 22, 2026' },
+          ],
+          notes: 'Calculated 3 examples on the blackboard. Students struggled most with distinguishing algebraic vs geometric multiplicity.',
+          assignment: {
+            id: 'asg_ma_01',
+            title: 'Characteristic Polynomial Problem Set',
+            description: 'Compute eigenvalues and find eigenvectors for 5 provided matrices in problem set 4.',
+            dueDate: 'Sep 28, 2026',
+            points: 75,
+            status: 'submitted',
+          },
+        },
+        teacherAudit: {
+          studentsAbsentCount: 2,
+          absentStudentsList: [
+            { name: 'Alex Rivera (You)', email: 'alex.rivera@university.edu', avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150', catchupStatus: 'In progress' },
+            { name: 'Chloe Taylor', email: 'c.taylor@university.edu', avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=150', catchupStatus: 'Completed' },
+          ],
+        },
+      },
+      {
+        id: 'topic_ma_03',
+        topicNumber: 3,
+        title: 'Diagonalization of Symmetric Matrices',
+        date: '2026-09-29',
+        displayDate: 'September 29, 2026',
+        status: 'upcoming',
+        studentMissed: false,
+        summary:
+          'Orthogonal diagonalization, Spectral Theorem, and matrix powers via A^k = P * D^k * P^-1.',
+        teacherUploaded: {
+          resources: [
+            { id: 'res_ma_03', title: 'Lecture 12 Preview - Spectral Theorem.pdf', type: 'pdf', size: '2.2 MB', uploadDate: 'Sep 25, 2026' },
+          ],
+          notes: 'Requires mastery of finding eigenvectors from the previous lecture.',
+        },
+        teacherAudit: { studentsAbsentCount: 0, absentStudentsList: [] },
+      },
+    ],
   },
   {
     id: 'subj_cs105',
     code: 'CS105',
     name: 'Python Programming',
     instructor: 'Prof. Elena Rostova',
+    instructorEmail: 'e.rostova@university.edu',
+    instructorOffice: 'Computing Hub, Room 102',
     color: '#0284C7', // Sky
     badgeColor: 'bg-sky-50 text-sky-700 border-sky-200',
     schedule: 'Fri • 03:00 PM',
     progress: 90,
     room: 'Comp Lab 1',
+    credits: 3,
     totalLectures: 18,
     attended: 18,
     missed: 0,
+    description:
+      'Modern Python application engineering, functional paradigms, object-oriented design patterns, generator pipelines, asynchronous concurrency, and clean test-driven design.',
+    topics: [
+      {
+        id: 'topic_py_01',
+        topicNumber: 1,
+        title: 'Object-Oriented Programming & Dunder Protocols',
+        date: '2026-09-20',
+        displayDate: 'September 20, 2026',
+        status: 'attended',
+        studentMissed: false,
+        summary:
+          'Classes, encapsulation, inheritance hierarchies, abstract base classes, and dunder methods (__str__, __repr__, __eq__, __iter__).',
+        teacherUploaded: {
+          resources: [
+            { id: 'res_py_01', title: 'Lecture 08 Deck - Python OOP & Data Model.pdf', type: 'pdf', size: '4.8 MB', uploadDate: 'Sep 20, 2026' },
+            { id: 'res_py_02', title: 'Starter Code - banking_system_skeleton.py', type: 'code', size: '24 KB', uploadDate: 'Sep 20, 2026' },
+            { id: 'res_py_03', title: 'Recording - Dunder Methods in Practice.mp4', type: 'video', size: '210 MB', uploadDate: 'Sep 20, 2026' },
+          ],
+          notes: 'Assigned OOP Banking System CLI Project due Oct 05.',
+          assignment: {
+            id: 'asg_py_01',
+            title: 'Object-Oriented Banking System CLI',
+            description: 'Implement polymorphic Account classes with transaction history generators.',
+            dueDate: 'Oct 05, 2026',
+            points: 100,
+            status: 'pending',
+          },
+        },
+        teacherAudit: { studentsAbsentCount: 0, absentStudentsList: [] },
+      },
+      {
+        id: 'topic_py_02',
+        topicNumber: 2,
+        title: 'Generators, Iterators & Memory-Efficient Pipelines',
+        date: '2026-09-13',
+        displayDate: 'September 13, 2026',
+        status: 'attended',
+        studentMissed: false,
+        summary:
+          'The yield statement, generator functions vs expressions, infinite streams, and stream processing large CSV datasets without RAM blowup.',
+        teacherUploaded: {
+          resources: [
+            { id: 'res_py_04', title: 'Generators and Coroutines in Python.pdf', type: 'pdf', size: '3.1 MB', uploadDate: 'Sep 13, 2026' },
+            { id: 'res_py_05', title: 'Dataset Processing Benchmark Script.py', type: 'code', size: '14 KB', uploadDate: 'Sep 13, 2026' },
+          ],
+          notes: 'Great attendance and active participation in the live coding session.',
+        },
+        teacherAudit: { studentsAbsentCount: 0, absentStudentsList: [] },
+      },
+    ],
   },
 ];
 
