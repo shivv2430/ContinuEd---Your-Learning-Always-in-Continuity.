@@ -139,7 +139,7 @@ export default function LandingPage() {
                     <span className="text-xs text-slate-400 dark:text-slate-500">• Student View</span>
                   </div>
                   <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mt-1">
-                    Good morning, Alex Rivera 👋
+                    Good morning, Aarav Sharma 👋
                   </h3>
                   <p className="text-xs text-slate-500 dark:text-slate-400">Let's get you back on track.</p>
                 </div>
@@ -198,7 +198,7 @@ export default function LandingPage() {
                     </p>
                   </div>
                   <div className="mt-3 text-xs text-slate-500 dark:text-slate-400 flex items-center justify-between">
-                    <span>Prof. David Vance</span>
+                    <span>Prof. Rajesh Sharma</span>
                     <span className="font-semibold text-slate-700 dark:text-slate-300">Tomorrow</span>
                   </div>
                 </div>

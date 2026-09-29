@@ -32,7 +32,7 @@ export default function TeacherDashboard() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-            Welcome back, Professor {user?.name?.split(' ')[1] || 'Vance'}.
+            Welcome back, Professor {user?.name?.split(' ')[user?.name?.split(' ').length - 1] || 'Sharma'}.
           </h1>
           <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">
             Department of Computer Science & Engineering • Academic Continuity Control Center

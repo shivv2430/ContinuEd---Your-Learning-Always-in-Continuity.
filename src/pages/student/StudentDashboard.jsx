@@ -43,7 +43,7 @@ export default function StudentDashboard() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-            Good morning, {user?.name || 'Alex'} 👋
+            Good morning, {user?.name || 'Aarav'} 👋
           </h1>
           <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">
             Let's get you back on track. Academic continuity in active session.

@@ -5,7 +5,7 @@ import Button from '../components/common/Button';
 import { useAuth } from '../context/AuthContext';
 
 export default function LoginPage() {
-  const [email, setEmail] = useState('alex.rivera@university.edu');
+  const [email, setEmail] = useState('aarav.sharma@university.edu');
   const [password, setPassword] = useState('password123');
   const [role, setRole] = useState('student');
   const [error, setError] = useState('');
@@ -17,10 +17,10 @@ export default function LoginPage() {
   const handleAutofill = (selectedRole) => {
     setRole(selectedRole);
     if (selectedRole === 'student') {
-      setEmail('alex.rivera@university.edu');
+      setEmail('aarav.sharma@university.edu');
       setPassword('password123');
     } else {
-      setEmail('d.vance@university.edu');
+      setEmail('r.sharma@university.edu');
       setPassword('teacher123');
     }
     setError('');
@@ -106,7 +106,7 @@ export default function LoginPage() {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="you@university.edu"
+              placeholder="aarav.sharma@university.edu"
               required
               className="w-full pl-9 pr-3 py-2 text-sm border border-slate-300 dark:border-slate-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-white"
             />
@@ -152,14 +152,14 @@ export default function LoginPage() {
             onClick={() => handleAutofill('student')}
             className="px-2.5 py-1 text-xs font-medium rounded-lg bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 hover:bg-indigo-100 dark:hover:bg-indigo-900 transition-colors border border-indigo-200 dark:border-indigo-800 cursor-pointer"
           >
-            Fill Demo Student
+            Fill Student (Aarav)
           </button>
           <button
             type="button"
             onClick={() => handleAutofill('teacher')}
             className="px-2.5 py-1 text-xs font-medium rounded-lg bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 hover:bg-emerald-100 dark:hover:bg-emerald-900 transition-colors border border-emerald-200 dark:border-emerald-800 cursor-pointer"
           >
-            Fill Demo Teacher
+            Fill Teacher (Prof. Sharma)
           </button>
         </div>
       </div>

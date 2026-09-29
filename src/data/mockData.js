@@ -5,8 +5,8 @@
 
 export const INITIAL_USER = {
   id: 'usr_student_01',
-  name: 'Alex Rivera',
-  email: 'alex.rivera@university.edu',
+  name: 'Aarav Sharma',
+  email: 'aarav.sharma@university.edu',
   role: 'student', // 'student' | 'teacher'
   department: 'Computer Science & Engineering',
   semester: '4th Semester',
@@ -15,8 +15,8 @@ export const INITIAL_USER = {
 
 export const TEACHER_USER = {
   id: 'usr_teacher_01',
-  name: 'Prof. David Vance',
-  email: 'd.vance@university.edu',
+  name: 'Prof. Rajesh Sharma',
+  email: 'r.sharma@university.edu',
   role: 'teacher',
   department: 'Computer Science & Engineering',
   avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=250',
@@ -27,8 +27,8 @@ export const SUBJECTS = [
     id: 'subj_cs201',
     code: 'CS201',
     name: 'Data Structures',
-    instructor: 'Prof. David Vance',
-    instructorEmail: 'd.vance@university.edu',
+    instructor: 'Prof. Rajesh Sharma',
+    instructorEmail: 'r.sharma@university.edu',
     instructorOffice: 'Faculty Tower B, Room 412',
     color: '#4F46E5', // Indigo
     badgeColor: 'bg-indigo-50 text-indigo-700 border-indigo-200',
@@ -110,7 +110,7 @@ export const SUBJECTS = [
         teacherAudit: {
           studentsAbsentCount: 4,
           absentStudentsList: [
-            { name: 'Alex Rivera (You)', email: 'alex.rivera@university.edu', avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150', catchupStatus: 'Not started' },
+            { name: 'Aarav Sharma (You)', email: 'aarav.sharma@university.edu', avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150', catchupStatus: 'Not started' },
             { name: 'Marcus Brody', email: 'm.brody@university.edu', avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150', catchupStatus: 'In progress' },
             { name: 'Sophia Lin', email: 's.lin@university.edu', avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150', catchupStatus: 'Completed' },
             { name: 'Ethan Hunt', email: 'e.hunt@university.edu', avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=150', catchupStatus: 'Not started' },
@@ -259,7 +259,7 @@ export const SUBJECTS = [
         teacherAudit: {
           studentsAbsentCount: 3,
           absentStudentsList: [
-            { name: 'Alex Rivera (You)', email: 'alex.rivera@university.edu', avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150', catchupStatus: 'Not started' },
+            { name: 'Aarav Sharma (You)', email: 'aarav.sharma@university.edu', avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150', catchupStatus: 'Not started' },
             { name: 'Liam Patel', email: 'l.patel@university.edu', avatar: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=150', catchupStatus: 'Completed' },
             { name: 'Maya Gomez', email: 'm.gomez@university.edu', avatar: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=150', catchupStatus: 'In progress' },
           ],
@@ -365,7 +365,7 @@ export const SUBJECTS = [
         teacherAudit: {
           studentsAbsentCount: 2,
           absentStudentsList: [
-            { name: 'Alex Rivera (You)', email: 'alex.rivera@university.edu', avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150', catchupStatus: 'In progress' },
+            { name: 'Aarav Sharma (You)', email: 'aarav.sharma@university.edu', avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150', catchupStatus: 'In progress' },
             { name: 'Chloe Taylor', email: 'c.taylor@university.edu', avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=150', catchupStatus: 'Completed' },
           ],
         },
@@ -470,7 +470,7 @@ export const MISSED_CLASSES = [
     topic: 'Linked Lists & Pointer Operations',
     missedDate: '2026-09-24',
     displayDate: 'September 24, 2026',
-    instructor: 'Prof. David Vance',
+    instructor: 'Prof. Rajesh Sharma',
     status: 'needs_catchup', // 'needs_catchup' | 'in_progress' | 'completed'
     catchupProgress: 0, // 0 - 100%
     estimatedMinutes: 40,
@@ -485,7 +485,7 @@ export const MISSED_CLASSES = [
     ],
     prerequisites: ['Static Arrays', 'Pointers & Memory Addresses', 'Structs / Classes Basics'],
     notes:
-      'Prof. Vance covered how arrays suffer from expensive shifts during insertion O(n), whereas linked lists can insert in O(1) if pointer is already at hand. Homework #3 was assigned.',
+      'Prof. Sharma covered how arrays suffer from expensive shifts during insertion O(n), whereas linked lists can insert in O(1) if pointer is already at hand. Homework #3 was assigned.',
     resources: [
       {
         id: 'res_01',
@@ -520,7 +520,7 @@ export const MISSED_CLASSES = [
     },
     studentsMissedCount: 4,
     studentsMissedList: [
-      { name: 'Alex Rivera', email: 'alex.rivera@university.edu', avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150', catchupStatus: 'Not started' },
+      { name: 'Aarav Sharma', email: 'aarav.sharma@university.edu', avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150', catchupStatus: 'Not started' },
       { name: 'Marcus Brody', email: 'm.brody@university.edu', avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150', catchupStatus: 'In progress' },
       { name: 'Sophia Lin', email: 's.lin@university.edu', avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150', catchupStatus: 'Completed' },
       { name: 'Ethan Hunt', email: 'e.hunt@university.edu', avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=150', catchupStatus: 'Not started' },
@@ -578,7 +578,7 @@ export const MISSED_CLASSES = [
     },
     studentsMissedCount: 3,
     studentsMissedList: [
-      { name: 'Alex Rivera', email: 'alex.rivera@university.edu', avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150', catchupStatus: 'Not started' },
+      { name: 'Aarav Sharma', email: 'aarav.sharma@university.edu', avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150', catchupStatus: 'Not started' },
       { name: 'Liam Patel', email: 'l.patel@university.edu', avatar: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=150', catchupStatus: 'Completed' },
       { name: 'Maya Gomez', email: 'm.gomez@university.edu', avatar: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=150', catchupStatus: 'In progress' },
     ],
@@ -626,7 +626,7 @@ export const MISSED_CLASSES = [
     },
     studentsMissedCount: 2,
     studentsMissedList: [
-      { name: 'Alex Rivera', email: 'alex.rivera@university.edu', avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150', catchupStatus: 'In progress' },
+      { name: 'Aarav Sharma', email: 'aarav.sharma@university.edu', avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150', catchupStatus: 'In progress' },
       { name: 'Chloe Taylor', email: 'c.taylor@university.edu', avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=150', catchupStatus: 'Completed' },
     ],
   },
@@ -637,7 +637,7 @@ export const UPCOMING_CLASSES = [
     id: 'up_01',
     subject: 'Data Structures',
     topic: 'Doubly Linked Lists & Circular Lists',
-    instructor: 'Prof. David Vance',
+    instructor: 'Prof. Rajesh Sharma',
     time: 'Tomorrow, 10:00 AM',
     room: 'Hall B-204',
     badgeColor: 'bg-indigo-50 text-indigo-700',
@@ -981,7 +981,7 @@ export const NOTIFICATIONS = [
   {
     id: 'notif_01',
     title: 'New Class Notes Available',
-    message: 'Prof. David Vance uploaded Lecture 14 Slides for Data Structures.',
+    message: 'Prof. Rajesh Sharma uploaded Lecture 14 Slides for Data Structures.',
     time: '2 hours ago',
     type: 'info',
     read: false,

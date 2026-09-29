@@ -177,7 +177,7 @@ export const classService = {
       topic: newClassData.topic,
       missedDate: newClassData.date,
       displayDate: new Date(newClassData.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }),
-      instructor: newClassData.instructor || 'Prof. David Vance',
+      instructor: newClassData.instructor || 'Prof. Rajesh Sharma',
       status: 'needs_catchup',
       catchupProgress: 0,
       estimatedMinutes: 40,
@@ -200,7 +200,7 @@ export const classService = {
       } : null,
       studentsMissedCount: 3,
       studentsMissedList: [
-        { name: 'Alex Rivera', email: 'alex.rivera@university.edu', avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150', catchupStatus: 'Not started' },
+        { name: 'Aarav Sharma', email: 'aarav.sharma@university.edu', avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150', catchupStatus: 'Not started' },
         { name: 'Marcus Brody', email: 'm.brody@university.edu', avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150', catchupStatus: 'Not started' },
       ],
     };

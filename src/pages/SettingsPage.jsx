@@ -23,8 +23,8 @@ import Badge from '../components/common/Badge';
 export default function SettingsPage() {
   const { user, role, switchRole } = useAuth();
   const { theme, setTheme, isDark } = useTheme();
-  const [name, setName] = useState(user?.name || 'Alex Rivera');
-  const [email, setEmail] = useState(user?.email || 'alex.rivera@university.edu');
+  const [name, setName] = useState(user?.name || 'Aarav Sharma');
+  const [email, setEmail] = useState(user?.email || 'aarav.sharma@university.edu');
   const [department, setDepartment] = useState(user?.department || 'Computer Science & Engineering');
   const [aiAssistanceLevel, setAiAssistanceLevel] = useState('detailed');
   const [saved, setSaved] = useState(false);
