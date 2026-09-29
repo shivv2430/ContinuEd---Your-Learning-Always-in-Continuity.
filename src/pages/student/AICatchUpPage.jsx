@@ -26,25 +26,38 @@ import Badge from '../../components/common/Badge';
 export default function AICatchUpPage() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const classItem = classService.getMissedClassById(id);
+  const [classItem, setClassItem] = useState(() => classService.getMissedClassById(id));
 
   const [loading, setLoading] = useState(true);
   const [aiPlan, setAiPlan] = useState(null);
   const [completedSteps, setCompletedSteps] = useState({});
   const [expandedHints, setExpandedHints] = useState({});
-  const [isCompleted, setIsCompleted] = useState(classItem?.status === 'completed');
+  const [isCompleted, setIsCompleted] = useState(() => {
+    const item = classService.getMissedClassById(id);
+    return item?.status === 'completed';
+  });
 
   useEffect(() => {
+    const item = classService.getMissedClassById(id);
+    setClassItem(item);
+    if (!item) {
+      setLoading(false);
+      return;
+    }
+
+    setIsCompleted(item.status === 'completed');
+    let isCancelled = false;
+    setLoading(true);
+
     async function loadPlan() {
-      if (!classItem) return;
-      setLoading(true);
       try {
-        const plan = await aiService.generateCatchUpPlan(classItem);
+        const plan = await aiService.generateCatchUpPlan(item);
+        if (isCancelled) return;
         setAiPlan(plan);
         // Preload any completed steps
         const initialStatus = {};
         plan.steps?.forEach((step, idx) => {
-          if (step.completed || classItem.status === 'completed') {
+          if (step.completed || item.status === 'completed') {
             initialStatus[idx] = true;
           }
         });
@@ -52,11 +65,17 @@ export default function AICatchUpPage() {
       } catch (err) {
         console.error('Error generating AI plan:', err);
       } finally {
-        setLoading(false);
+        if (!isCancelled) {
+          setLoading(false);
+        }
       }
     }
     loadPlan();
-  }, [id, classItem]);
+
+    return () => {
+      isCancelled = true;
+    };
+  }, [id]);
 
   if (!classItem) {
     return (
@@ -74,6 +93,7 @@ export default function AICatchUpPage() {
   const progressPercent = Math.round((numCompleted / totalSteps) * 100);
 
   const toggleStep = (stepIndex) => {
+    if (!classItem) return;
     const updated = { ...completedSteps, [stepIndex]: !completedSteps[stepIndex] };
     setCompletedSteps(updated);
 
@@ -81,7 +101,8 @@ export default function AICatchUpPage() {
     const newProgress = Math.round((newCompletedCount / totalSteps) * 100);
 
     const newStatus = newProgress === 100 ? 'completed' : 'in_progress';
-    classService.updateMissedClassStatus(classItem.id, newStatus, newProgress);
+    const updatedItem = classService.updateMissedClassStatus(classItem.id, newStatus, newProgress);
+    if (updatedItem) setClassItem(updatedItem);
 
     if (newProgress === 100) {
       setIsCompleted(true);
@@ -91,7 +112,9 @@ export default function AICatchUpPage() {
   };
 
   const handleMarkComplete = () => {
-    classService.markLearningComplete(classItem.id);
+    if (!classItem) return;
+    const updatedItem = classService.markLearningComplete(classItem.id);
+    if (updatedItem) setClassItem(updatedItem);
     setIsCompleted(true);
     // Mark all steps completed
     const all = {};

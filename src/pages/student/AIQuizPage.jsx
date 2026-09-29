@@ -20,7 +20,7 @@ import Badge from '../../components/common/Badge';
 export default function AIQuizPage() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const classItem = classService.getMissedClassById(id);
+  const [classItem, setClassItem] = useState(() => classService.getMissedClassById(id));
 
   const [loading, setLoading] = useState(true);
   const [questions, setQuestions] = useState([]);
@@ -30,20 +30,35 @@ export default function AIQuizPage() {
   const [score, setScore] = useState(0);
 
   useEffect(() => {
+    const item = classService.getMissedClassById(id);
+    setClassItem(item);
+    if (!item) {
+      setLoading(false);
+      return;
+    }
+
+    let isCancelled = false;
+    setLoading(true);
+
     async function loadQuiz() {
-      if (!classItem) return;
-      setLoading(true);
       try {
-        const qList = await aiService.generateQuiz(classItem);
+        const qList = await aiService.generateQuiz(item);
+        if (isCancelled) return;
         setQuestions(qList);
       } catch (err) {
         console.error('Quiz loading error:', err);
       } finally {
-        setLoading(false);
+        if (!isCancelled) {
+          setLoading(false);
+        }
       }
     }
     loadQuiz();
-  }, [id, classItem]);
+
+    return () => {
+      isCancelled = true;
+    };
+  }, [id]);
 
   if (!classItem) {
     return (
@@ -87,8 +102,9 @@ export default function AIQuizPage() {
     setSubmitted(true);
 
     // If passed (>= 3 out of 5), mark class as caught up
-    if (calculatedScore >= 3) {
-      classService.markLearningComplete(classItem.id);
+    if (calculatedScore >= 3 && classItem) {
+      const updated = classService.markLearningComplete(classItem.id);
+      if (updated) setClassItem(updated);
     }
   };
 
