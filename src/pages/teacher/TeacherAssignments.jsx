@@ -24,24 +24,24 @@ export default function TeacherAssignments() {
         {assignments.map((asg) => (
           <div
             key={asg.id}
-            className="bg-white rounded-3xl p-6 border border-slate-200/90 shadow-xs space-y-4"
+            className="bg-white dark:bg-slate-900 rounded-3xl p-6 border border-slate-200/90 dark:border-slate-800 shadow-xs space-y-4"
           >
             <div className="flex items-start justify-between">
               <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded border border-indigo-200">
+                <span className="text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/70 px-2 py-0.5 rounded border border-indigo-200 dark:border-indigo-800/80">
                   {asg.subject || 'Data Structures'}
                 </span>
-                <h3 className="text-base font-bold text-slate-900 mt-1">{asg.title}</h3>
+                <h3 className="text-base font-bold text-slate-900 dark:text-white mt-1">{asg.title}</h3>
               </div>
               <Badge variant="indigo">{asg.points || 100} Points</Badge>
             </div>
 
-            <div className="flex items-center justify-between text-xs text-slate-500 pt-3 border-t border-slate-100">
+            <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 pt-3 border-t border-slate-100 dark:border-slate-800">
               <span className="flex items-center gap-1.5">
-                <Calendar className="w-3.5 h-3.5 text-slate-400" />
+                <Calendar className="w-3.5 h-3.5 text-slate-400 dark:text-slate-500" />
                 Due: {asg.dueDate}
               </span>
-              <span className="text-emerald-600 font-semibold flex items-center gap-1">
+              <span className="text-emerald-600 dark:text-emerald-400 font-semibold flex items-center gap-1">
                 <CheckCircle2 className="w-3.5 h-3.5" />
                 28 / 34 Submitted
               </span>

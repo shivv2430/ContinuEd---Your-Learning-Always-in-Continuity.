@@ -57,19 +57,19 @@ export default function LoginPage() {
   return (
     <div>
       <div className="mb-6 text-center">
-        <h2 className="text-xl font-bold text-slate-900">Welcome Back</h2>
-        <p className="text-xs text-slate-500 mt-1">Sign in to resume your academic continuity</p>
+        <h2 className="text-xl font-bold text-slate-900 dark:text-white">Welcome Back</h2>
+        <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">Sign in to resume your academic continuity</p>
       </div>
 
       {/* Role Toggle */}
-      <div className="grid grid-cols-2 gap-2 p-1 bg-slate-100 rounded-xl mb-6">
+      <div className="grid grid-cols-2 gap-2 p-1 bg-slate-100 dark:bg-slate-800 rounded-xl mb-6">
         <button
           type="button"
           onClick={() => setRole('student')}
           className={`flex items-center justify-center gap-1.5 py-2 text-xs font-semibold rounded-lg transition-all cursor-pointer ${
             role === 'student'
-              ? 'bg-white text-indigo-700 shadow-xs'
-              : 'text-slate-600 hover:text-slate-900'
+              ? 'bg-white dark:bg-slate-700 text-indigo-700 dark:text-indigo-300 shadow-xs'
+              : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
           }`}
         >
           <GraduationCap className="w-3.5 h-3.5" />
@@ -80,8 +80,8 @@ export default function LoginPage() {
           onClick={() => setRole('teacher')}
           className={`flex items-center justify-center gap-1.5 py-2 text-xs font-semibold rounded-lg transition-all cursor-pointer ${
             role === 'teacher'
-              ? 'bg-white text-indigo-700 shadow-xs'
-              : 'text-slate-600 hover:text-slate-900'
+              ? 'bg-white dark:bg-slate-700 text-indigo-700 dark:text-indigo-300 shadow-xs'
+              : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
           }`}
         >
           <UserCheck className="w-3.5 h-3.5" />
@@ -90,14 +90,14 @@ export default function LoginPage() {
       </div>
 
       {error && (
-        <div className="mb-4 p-3 rounded-xl bg-rose-50 border border-rose-200 text-rose-700 text-xs font-medium">
+        <div className="mb-4 p-3 rounded-xl bg-rose-50 dark:bg-rose-950/50 border border-rose-200 dark:border-rose-800 text-rose-700 dark:text-rose-300 text-xs font-medium">
           {error}
         </div>
       )}
 
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label className="block text-xs font-semibold text-slate-700 mb-1">
+          <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
             Academic Email
           </label>
           <div className="relative">
@@ -108,13 +108,13 @@ export default function LoginPage() {
               onChange={(e) => setEmail(e.target.value)}
               placeholder="you@university.edu"
               required
-              className="w-full pl-9 pr-3 py-2 text-sm border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-600 bg-white"
+              className="w-full pl-9 pr-3 py-2 text-sm border border-slate-300 dark:border-slate-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-white"
             />
           </div>
         </div>
 
         <div>
-          <label className="block text-xs font-semibold text-slate-700 mb-1">
+          <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
             Password
           </label>
           <div className="relative">
@@ -125,7 +125,7 @@ export default function LoginPage() {
               onChange={(e) => setPassword(e.target.value)}
               placeholder="••••••••"
               required
-              className="w-full pl-9 pr-3 py-2 text-sm border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-600 bg-white"
+              className="w-full pl-9 pr-3 py-2 text-sm border border-slate-300 dark:border-slate-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-white"
             />
           </div>
         </div>
@@ -142,31 +142,31 @@ export default function LoginPage() {
       </form>
 
       {/* Demo Autofill Shortcuts */}
-      <div className="mt-6 pt-5 border-t border-slate-100 text-center">
-        <p className="text-[11px] font-semibold uppercase tracking-wider text-slate-400 mb-2">
+      <div className="mt-6 pt-5 border-t border-slate-100 dark:border-slate-800 text-center">
+        <p className="text-[11px] font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500 mb-2">
           Demo Instant Access
         </p>
         <div className="flex items-center justify-center gap-2">
           <button
             type="button"
             onClick={() => handleAutofill('student')}
-            className="px-2.5 py-1 text-xs font-medium rounded-lg bg-indigo-50 text-indigo-700 hover:bg-indigo-100 transition-colors border border-indigo-200 cursor-pointer"
+            className="px-2.5 py-1 text-xs font-medium rounded-lg bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 hover:bg-indigo-100 dark:hover:bg-indigo-900 transition-colors border border-indigo-200 dark:border-indigo-800 cursor-pointer"
           >
             Fill Demo Student
           </button>
           <button
             type="button"
             onClick={() => handleAutofill('teacher')}
-            className="px-2.5 py-1 text-xs font-medium rounded-lg bg-emerald-50 text-emerald-700 hover:bg-emerald-100 transition-colors border border-emerald-200 cursor-pointer"
+            className="px-2.5 py-1 text-xs font-medium rounded-lg bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 hover:bg-emerald-100 dark:hover:bg-emerald-900 transition-colors border border-emerald-200 dark:border-emerald-800 cursor-pointer"
           >
             Fill Demo Teacher
           </button>
         </div>
       </div>
 
-      <div className="mt-6 text-center text-xs text-slate-500">
+      <div className="mt-6 text-center text-xs text-slate-500 dark:text-slate-400">
         Don't have an account yet?{' '}
-        <Link to="/signup" className="font-semibold text-indigo-600 hover:text-indigo-800">
+        <Link to="/signup" className="font-semibold text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300">
           Create Account
         </Link>
       </div>
